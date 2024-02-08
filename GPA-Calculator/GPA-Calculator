@@ -1,0 +1,397 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width,inital-scale=1.0">
+    <title>GPA Calculator</title>
+  <style>
+      @import url('https://fonts.googleapis.com/css2?family=Honk&display=swap');
+
+  body{
+    background-color: beige;
+    font-family: 'Times New Roman', Times, serif;
+    font-size: 20px;
+  }
+  h1{
+    font-family: 'Honk', sans-serif;
+    font-size: 50px;
+    text-align: center;
+    margin-top: 16px;
+  }
+  #container{
+    display:flex;
+    justify-content: center;
+    margin-top: 30px;
+  }
+  #table-container{
+    position:relative;
+    background: #ffbd55;
+    color:black;
+    font-size: 14px;
+    padding: 10px;
+    box-shadow: 0 0 25px rgba(0,0,0,0.2);
+    border-radius: 5px;
+    overflow: auto;
+    max-height: 250px;
+    margin-top: 20px;
+  }
+  #table{
+    width:100%;
+    border-collapse:collapse;
+  }
+  #table th, #table td{
+    padding: 8px;
+    text-align:center;
+  }
+  #table th{
+    background-color: rgba(255,64,175,255);
+  }
+  #table tr:nth-child(odd){
+    background-color: rgba(255,64,175,255);
+  }
+  #table tr:hover{
+    background-color: azure;
+  }
+  #table2{
+    position:relative;
+    background: #ffbd55;
+    color:black;
+    font-size: 20px;
+    padding: 10px;
+    box-shadow: 0 0 25px rgba(0,0,0,0.2);
+    border-radius: 5px;
+    overflow: auto;
+    max-height: 250px;
+    margin-top: 30px;
+  }
+  #table2 th{
+    background-color: rgba(255,64,175,255);
+    padding: 8px;
+    text-align:center;
+  }
+  #table2 tr:nth-child(odd){
+    background-color: rgba(255,64,175,255);;
+  }
+  #table2 tr:nth-child(even){
+    background-color: #ffbd55;
+  }
+  #reset-button, #calculate-gpa{
+    margin-top: 30px;
+  }
+  #overall-gpa{
+    color: black;
+    font-size: larger;
+    font-family: 'Times New Roman', Times, serif;
+    font-weight:bold;
+    width: 200px;
+    height:55px;
+    position:absolute;
+    top:18%;
+    left:70%;
+    transform:translate(-50%,-50%);
+    display:flex;
+    justify-content:center;
+    align-items:center;
+    border-radius:5px;
+    box-shadow: 0 0 25px rgba(0,0,0,0.2);
+  }
+  </style>
+</head>
+<body>
+    <div>
+	    <h1>High School GPA Calculator</h1>
+    </div>
+	<div class="container-1">
+        <td>
+        <input type="button" value="Calculate GPA" id = 'calculate-gpa' onClick="calculate()">
+      </td>
+      <td>
+        <input type="reset" value="Reset" id = 'reset-button' onClick="reset()">
+      </td>
+	</div>
+    <div id = 'table-container'>
+        <table id = 'table'>
+          <tr>
+            <th>Course Name</th>
+            <th>Credit Hours</th>
+            <th>Grade Earned</th>
+            <th>Weight</th>
+          </tr>
+          <tr>
+            <td><input type="text" id = "course_name1"></td>
+            <td><input type="text" id = "credit_hours1"></td>
+            <td>
+            <select name="grade_earned1">
+              <option value="none" selected>Grade</option>
+              <option value="a">A</option>
+              <option value="b">B</option>
+              <option value="c">C</option>
+              <option value="f">F below</option>
+            </select>
+            </td>
+            <td>
+              <select name=weight1">
+                <option
+          value="regular">Regular</option>
+                <option
+          value="honors">Honors</option>
+                <option
+          value="ap">AP</option>
+              </select>
+            </td>
+          </tr>
+          <tr>
+            <td><input type="text" id = "course_name2"></td>
+            <td><input type="text" id = "credit_hours2"></td>
+            <td>
+            <select name="grade_earned2">
+              <option value="none" selected>Grade</option>
+              <option value="a">A</option>
+              <option value="b">B</option>
+              <option value="c">C</option>
+              <option value="f">F below</option>
+            </select>
+            </td>
+            <td>
+              <select name=weight2">
+                <option
+          value="regular">Regular</option>
+                <option
+          value="honors">Honors</option>
+                <option
+          value="ap">AP</option>
+              </select>
+            </td>
+          </tr>
+          <tr>
+            <td><input type="text" id = "course_name3"></td>
+            <td><input type="text" id = "credit_hours3"></td>
+            <td>
+            <select name="grade_earned3">
+              <option value="none" selected>Grade</option>
+              <option value="a">A</option>
+              <option value="b">B</option>
+              <option value="c">C</option>
+              <option value="f">F below</option>
+            </select>
+            </td>
+            <td>
+              <select name=weight3">
+                <option
+          value="regular">Regular</option>
+                <option
+          value="honors">Honors</option>
+                <option
+          value="ap">AP</option>
+              </select>
+            </td>
+          </tr>
+          <tr>
+            <td><input type="text" id = "course_name4"></td>
+            <td><input type="text" id = "credit_hours4"></td>
+            <td>
+            <select name="grade_earned4">
+              <option value="none" selected>Grade</option>
+              <option value="a">A</option>
+              <option value="b">B</option>
+              <option value="c">C</option>
+              <option value="f">F below</option>
+            </select>
+            </td>
+            <td>
+              <select name=weight4">
+                <option
+          value="regular">Regular</option>
+                <option
+          value="honors">Honors</option>
+                <option
+          value="ap">AP</option>
+              </select>
+            </td>
+          </tr>
+         <tr>
+            <td><input type="text" id = "course_name5"></td>
+            <td><input type="text" id = "credit_hours5"></td>
+            <td>
+            <select name="grade_earned5">
+              <option value="none" selected>Grade</option>
+              <option value="a">A</option>
+              <option value="b">B</option>
+              <option value="c">C</option>
+              <option value="f">F below</option>
+            </select>
+            </td>
+            <td>
+              <select name=weight5">
+                <option
+          value="regular">Regular</option>
+                <option
+          value="honors">Honors</option>
+                <option
+          value="ap">AP</option>
+              </select>
+            </td>
+          </tr>
+          <tr>
+            <td><input type="text" id = "course_name6"></td>
+            <td><input type="text" id = "credit_hours6"></td>
+            <td>
+            <select name="grade_earned6">
+              <option value="none" selected>Grade</option>
+              <option value="a">A</option>
+              <option value="b">B</option>
+              <option value="c">C</option>
+              <option value="f">F below</option>
+            </select>
+            </td>
+            <td>
+              <select name=weight6">
+                <option
+          value="regular">Regular</option>
+                <option
+          value="honors">Honors</option>
+                <option
+          value="ap">AP</option>
+              </select>
+            </td>
+          </tr>
+        </table>
+    </div>
+    <div id = 'gpa'></div>
+    <table id = 'table2'>
+    <tr>
+      <th>Letter Grade</th>
+      <th>Number Grade</th>
+      <th>GPA</th>
+    </tr>
+    <tr>
+      <td>A</td>
+      <td>90-100</td>
+      <td>4.0</td>
+    </tr>
+    <tr>
+      <td>B</td>
+      <td>80-89</td>
+      <td>3.0</td>
+    </tr>
+    <tr>
+      <td>C</td>
+      <td>70-79</td>
+      <td>2.0</td>
+    </tr>
+    <tr>
+      <td>F</td>
+      <td>0-69</td>
+      <td>0.0</td>
+    </tr>
+    </table>
+
+    <div id = 'overall-gpa'>Overall GPA:</div>
+    <script>
+      var createWeightsArray = function(weight1, weight2, weight3, weight4, weight5, weight6, grade1, grade2, grade3, grade4, grade5, grade6) {
+  var weights = [];
+  var grades = [grade1,grade2,grade3,grade4,grade5,grade6];
+  var weightsArray = [weight1, weight2, weight3, weight4, weight5, weight6];
+  for(var i=0; i < grades.length; i++){
+    if (grades[i] !== "none") {
+      weights.push(weightsArray[i]);
+    }
+  }
+  return weights;
+
+  if (grades.length > 0){
+    return grades;
+  } else {
+    alert("Please enter at least one grade.")
+  }
+  };
+
+  var convert = function(grades){
+    for(var i = 0; i < grades.length; i++){
+      switch(grades[i]){
+        case 'a':
+        grades[i] = 4.0
+        break;
+        case 'b':
+        grades[i] = 3.0
+        break;
+        case 'c':
+        grades[i] = 2.0
+        break;
+        case 'f':
+        grades[i] = 0.0
+        break;
+      }
+    }
+    return grades;
+  };
+
+  var weight = function(weights,grades) {
+    for(var i = 0; i < grades.length; i++) {
+      var num = grades[i].toString();
+      if(weights[i] === "honors") {
+        if(num[2] === "3") {
+          grades[i] = grades[i] + 0.4;
+        }else{
+          grades[i] = grades[i] + 0.3;
+        }
+      }else if(weights[i] === "ap") {
+        if(num[2] === "7"){
+          grades[i] = grades[i] + 0.6;
+        }else{
+          grades[i] = grades[i] + 0.7;
+        }
+      }
+    }
+      return grades;
+};
+
+var averageGrades = function(grades) {
+  var x = 0;
+  
+  for(var i = 0; i < grades.length; i++) {
+    x = x + grades[i]
+  }
+  
+  return x / grades.length;
+};
+// Define the calculate function
+function calculate() {
+  // Your calculation logic here
+  console.log("Calculate button clicked");
+}
+
+function newFunction(){
+        var element = document.getElementById(" table");
+         element.reset()
+      }
+
+var calculate = function() {
+  var weight1 = document.grades.weight1.value;
+  var weight2 = document.grades.weight2.value;
+  var weight3 = document.grades.weight3.value;
+  var weight4 = document.grades.weight4.value;
+  var weight5 = document.grades.weight5.value;
+  var weight6 = document.grades.weight6.value;
+  
+  var grade1 = document.grades.grade1.value;
+  var grade2 = document.grades.grade2.value;
+  var grade3 = document.grades.grade3.value;
+  var grade4 = document.grades.grade4.value;
+  var grade5 = document.grades.grade5.value;
+  var grade6 = document.grades.grade6.value;
+  
+  var weights = createWeightsArray(weight1, weight2, weight3, weight4, weight5, weight6, grade1, grade2, grade3, grade4, grade5, grade6);
+  
+  grades = convert(grades);
+  
+  grades = weight(weights, grades);
+  
+  var gpa = averageGrades(grades);
+
+  printToDiv(gpa);
+};
+    </script>
+</body>
+</html>
